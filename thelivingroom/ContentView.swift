@@ -8,9 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //models
+    var channels:[Channel] = [Channel(name: "My Family")]
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            // Family Group
+            List(channels, id: \.id){ c in
+                NavigationLink(destination:CallView()){
+                    Text(c.name)
+                }
+            }
+            .navigationBarTitle("The Living Room")
+        }
+        .background(Color(.white).opacity(0))
     }
 }
 
