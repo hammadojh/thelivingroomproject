@@ -36,6 +36,25 @@ struct CallView: View {
     
     var currentUserId = UUID().uuidString
     
+    // sound bigger
+    
+    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
+   
+    @ObservedObject private var mic = MicrophoneMonitor(numberOfSamples: 1)
+    
+    private func normalizeSoundLevel(level: Float) -> CGFloat {
+        let level = max(0.2, CGFloat(level) + 50) / 2 // between 0.1 and 25
+        
+        return CGFloat(level * (300 / 25)) // scaled to max at 300 (our height of our bar)
+    }
+    
+    @State var local_size:CGFloat = 100
+    @State var isTalking:Bool = true
+    
+    @State var remote_size:CGFloat = 100
+    
+    // body
+    
     var body: some View {
         VStack{
             ZStack{
@@ -46,7 +65,7 @@ struct CallView: View {
                     backImage: Image("logo"),
                     hideCanvas: !isLocalInSession,
                     canvas: localCanvas
-                ).frame(width: 112, height: 112).position(local_point)
+                ).frame(width: local_size, height: local_size).position(local_point)
                 
                 
                 // remote
@@ -55,7 +74,7 @@ struct CallView: View {
                     backImage: Image("big_logo"),
                     hideCanvas: isRemoteVideoMuted || !isRemoteInSession || !isLocalInSession,
                     canvas: remoteCanvas
-                ).frame(width: 112, height: 112).position(remote_point)
+                ).frame(width: remote_size, height: remote_size).position(remote_point)
                             
                 
                 //background interaction
@@ -71,28 +90,6 @@ struct CallView: View {
                     //store in database
                     
                     ref.child("users/\(currentUserId)/").setValue(["id":currentUserId,"x":local_point.x,"y":local_point.y])
-                    
-//                    //change sound #1
-//
-//                    let distance = CGPointDistanceSquared(from: CGPoint(x: self.x, y: self.y), to: self.point_1)
-//
-//                    self.volume = 1 - Float(((distance)/300))
-//                    if self.volume < 0.1{ self.volume = 0.1}
-//                    self.talking?.setVolume(self.volume, fadeDuration: .greatestFiniteMagnitude)
-//
-//                    print("distance 1 \(distance)")
-//                    print("volume 1 \(self.volume)")
-                    
-//                    //change sound #2
-//
-//                    let distance_2 = CGPointDistanceSquared(from: CGPoint(x: self.x, y: self.y), to: self.point_2)
-//
-//                    self.volume_2 = 1 - Float(((distance_2)/300))
-//                    if self.volume_2 < 0.1{ self.volume_2 = 0.1}
-//                    self.talking_2?.setVolume(self.volume_2, fadeDuration: .greatestFiniteMagnitude)
-//
-//                    print("distance 2 \(distance)")
-//                    print("volume 2 \(self.volume_2)")
                     
                 }
             }
@@ -113,7 +110,8 @@ struct CallView: View {
                 }.frame(width: 55, height: 55)
             }.padding()
         
-        }.onAppear {
+        }
+        .onAppear {
             // This is our usual steps for joining
             // a channel and starting a call.
             self.initializeAgoraEngine()
@@ -145,6 +143,29 @@ struct CallView: View {
                 if volume < 10 { volume = 10 }
                 rtcEngine.adjustPlaybackSignalVolume(volume)
                 
+            }
+        }
+        .onReceive(timer) { _ in
+            
+            // getting the sound leve;
+            let level = self.normalizeSoundLevel(level: self.mic.soundSamples[0])
+            
+            // decide if the person is talking
+            if level > 10 {
+                self.isTalking = true
+            }else{
+                self.isTalking = false
+            }
+            
+            // if he is talking make his image bigger
+            if self.isTalking{
+                withAnimation {
+                    self.local_size = self.local_size * 1.1
+                }
+            }else{
+                withAnimation{
+                    self.local_size = self.local_size * 0.75
+                }
             }
         }
     }
