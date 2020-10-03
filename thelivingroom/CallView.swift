@@ -64,7 +64,9 @@ struct CallView: View {
                        location in
                     
                     // change image location
-                    local_point = location
+                    withAnimation {
+                        local_point = location
+                    }
                     
                     //store in database
                     
@@ -119,7 +121,7 @@ struct CallView: View {
             self.setupLocalVideo()
             self.toggleLocalSession()
             
-            //observe firebase datachange
+            ///// observe firebase datachange //// 
             
             ref.child("users").observe(.childChanged) { (snapshot) in
                 
@@ -129,11 +131,19 @@ struct CallView: View {
                 //id
                 let moved_id = value?.value(forKey: "id") as! String
                 
+                // move
                 if moved_id != currentUserId {
-                    remote_point.x = value?.value(forKey: "x") as! CGFloat
-                    remote_point.y = value?.value(forKey: "y") as! CGFloat
+                    withAnimation {
+                        remote_point.x = value?.value(forKey: "x") as! CGFloat
+                        remote_point.y = value?.value(forKey: "y") as! CGFloat
+                    }
                 }
                 
+                // sound
+                let distance = CGPointDistanceSquared(from: local_point, to: remote_point)
+                var volume = Int(100 - ((distance-50)/600)*100)
+                if volume < 10 { volume = 10 }
+                rtcEngine.adjustPlaybackSignalVolume(volume)
                 
             }
         }
