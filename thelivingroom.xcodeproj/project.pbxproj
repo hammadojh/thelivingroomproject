@@ -22,6 +22,9 @@
 		0727CBA425278BF800D9359D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0727CBA325278BF800D9359D /* GoogleService-Info.plist */; };
 		0727CBC025278D8300D9359D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727CBBF25278D8300D9359D /* AppDelegate.swift */; };
 		0727CBC825284EE200D9359D /* SoundVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727CBC725284EE200D9359D /* SoundVisualizer.swift */; };
+		0727CBD32528DA0900D9359D /* VideoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727CBD22528DA0800D9359D /* VideoCircle.swift */; };
+		0727CBD82528E5C500D9359D /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727CBD72528E5C500D9359D /* Splash.swift */; };
+		0727CBDD2528E5D200D9359D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727CBDC2528E5D200D9359D /* Home.swift */; };
 		44FDAF91555F75016F05F8A9 /* Pods_thelivingroomTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0C3C7E6B77B78A3E8AB408 /* Pods_thelivingroomTests.framework */; };
 		93E81C30B890FDB2BEE29461 /* Pods_thelivingroom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4BDEBEAAD5315B92E7BAC3 /* Pods_thelivingroom.framework */; };
 		AA6429F3B89751AAAC4AB0EA /* Pods_thelivingroom_thelivingroomUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594205F9C368F7216E6DEE64 /* Pods_thelivingroom_thelivingroomUITests.framework */; };
@@ -66,6 +69,9 @@
 		0727CBA325278BF800D9359D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0727CBBF25278D8300D9359D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0727CBC725284EE200D9359D /* SoundVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundVisualizer.swift; sourceTree = "<group>"; };
+		0727CBD22528DA0800D9359D /* VideoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCircle.swift; sourceTree = "<group>"; };
+		0727CBD72528E5C500D9359D /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		0727CBDC2528E5D200D9359D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1CCCE9C939CC2331519C1DC6 /* Pods-thelivingroom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thelivingroom.debug.xcconfig"; path = "Target Support Files/Pods-thelivingroom/Pods-thelivingroom.debug.xcconfig"; sourceTree = "<group>"; };
 		2E4788D599AA797BBEE9121A /* Pods-thelivingroomTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thelivingroomTests.release.xcconfig"; path = "Target Support Files/Pods-thelivingroomTests/Pods-thelivingroomTests.release.xcconfig"; sourceTree = "<group>"; };
 		594205F9C368F7216E6DEE64 /* Pods_thelivingroom_thelivingroomUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thelivingroom_thelivingroomUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +140,10 @@
 				0727CB542527792D00D9359D /* thelivingroomApp.swift */,
 				0727CB8C25277CFD00D9359D /* Model */,
 				0727CB562527792D00D9359D /* ContentView.swift */,
+				0727CBD72528E5C500D9359D /* Splash.swift */,
+				0727CBDC2528E5D200D9359D /* Home.swift */,
 				0727CB82252779D300D9359D /* CallView.swift */,
+				0727CBD22528DA0800D9359D /* VideoCircle.swift */,
 				0727CB9825277D8600D9359D /* lib */,
 				0727CB582527793000D9359D /* Assets.xcassets */,
 				0727CB5D2527793000D9359D /* Info.plist */,
@@ -457,9 +466,12 @@
 				0727CBC025278D8300D9359D /* AppDelegate.swift in Sources */,
 				0727CB8825277A7900D9359D /* Channel.swift in Sources */,
 				0727CBC825284EE200D9359D /* SoundVisualizer.swift in Sources */,
+				0727CBDD2528E5D200D9359D /* Home.swift in Sources */,
 				0727CB9425277D7D00D9359D /* AppID.swift in Sources */,
 				0727CB572527792D00D9359D /* ContentView.swift in Sources */,
 				0727CB9325277D7D00D9359D /* VideoCanvas.swift in Sources */,
+				0727CBD32528DA0900D9359D /* VideoCircle.swift in Sources */,
+				0727CBD82528E5C500D9359D /* Splash.swift in Sources */,
 				0727CB552527792D00D9359D /* thelivingroomApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

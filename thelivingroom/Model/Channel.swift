@@ -10,4 +10,6 @@ import Foundation
 struct Channel:Identifiable {
     var id=UUID()
     var name:String = ""
+    var image:String = "empty-group"
+    var online:[String] = []
 }

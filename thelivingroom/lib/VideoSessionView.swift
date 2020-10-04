@@ -9,11 +9,14 @@
 import SwiftUI
 
 struct VideoSessionView : View {
-    
+        
     var backColor: Color?
     var backImage: Image?
     var hideCanvas: Bool = false
     var canvas: VideoCanvas?
+    
+    @State var location:CGPoint = CGPoint(x: 0, y: 0)
+    @State var size:CGFloat = 100
     
     var body: some View {
         ZStack {

@@ -9,20 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //models
-    var channels:[Channel] = [Channel(name: "My Family")]
+    @State var isSplashActive = true
     
     var body: some View {
-        NavigationView {
-            // Family Group
-            List(channels, id: \.id){ c in
-                NavigationLink(destination:CallView()){
-                    Text(c.name)
+        if(isSplashActive){
+            Splash().onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    withAnimation {
+                        self.isSplashActive = false
+                    }
                 }
             }
-            .navigationBarTitle("The Living Room")
+        }else{
+            Home()
         }
-        .background(Color(.white).opacity(0))
     }
 }
 
