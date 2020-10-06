@@ -15,4 +15,4 @@ let AppID: String = "e894803468094df9b69474d7535f1aa7"
  * 生成Token需要参照官方文档部署Token服务器，开发阶段若想先不部署服务器, 可以在https://dashbaord.agora.io生成
  * 临时Token. 请注意生成Token时指定的频道名, 该Token只允许加入对应的频道
  */
-let Token: String? = "006e894803468094df9b69474d7535f1aa7IADbtFtjmnAdPISMw5if2XME4sahPG0H/gtKH8FBkmRk898AXuMAAAAAEAA8TtCoG4B7XwEAAQAbgHtf"
+let Token: String? = "006e894803468094df9b69474d7535f1aa7IADzR63LZ4gqUxr3Yn6UJD2m20OQirub+8mCk3xiyyB2498AXuMAAAAAEAANYBkGY0J+XwEAAQBjQn5f"
